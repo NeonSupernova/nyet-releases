@@ -93,6 +93,7 @@ step 2 won't stick. That's fine: `cd` into the folder and run
 nyet run file.no              # compile and immediately run
 nyet check file.no            # check for errors, produce no executable
 nyet -o myprogram.exe file.no # compile to a named executable
+nyet --version                # which build you have
 ```
 
 ## The arcade — start here
