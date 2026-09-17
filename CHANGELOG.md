@@ -7,6 +7,68 @@ behaviour, diagnostics, and the contents of the distributed bundle.
 
 The format follows [Keep a Changelog](https://keepachangelog.com/).
 
+## [0.4.0] — 2026-09-17
+
+### Changed — this one breaks existing programs
+
+- **Calling a macro now needs a trailing `!`**: `(assert! cond)`,
+  `(out! "hi")`, `(unless! done (retry))`. Declarations keep their bare
+  name — the bang belongs to the call — so `(macro unless ...)` is
+  unchanged. A macro called without the bang is no longer expanded and
+  fails as an undefined name. This also lets a macro and a function
+  share a name, since only the call site distinguishes them.
+
+### Added
+
+- **IO channels.** One `io` verb writes to and reads from any channel:
+  `(io ch "text")` writes, `(io ch)` reads. `FileIO` opens a real file
+  in `Read`, `Write` or `Append` mode, and `out`/`err`/`in` are the
+  standard channels behind the `out!`/`err!` sugar. Your own type
+  becomes a channel by implementing the `IOChannel` trait, and the raw
+  `write`/`read`/`close` calls return a `Result` to `match` on instead
+  of panicking.
+- **Closures that capture their environment** — `fn` captures by
+  reference, `move fn` by value. Function values are real closure
+  records, so a closure can outlive the expression that built it.
+- **`file_read_lines`** reads a file into an `Array[string]`, one
+  element per line, following Python's `splitlines` rules.
+- **`std/ansi.no`** — terminal styling as ordinary Nyet source: SGR
+  styles, the 16 standard colors, 256-color and 24-bit truecolor,
+  hex helpers, and nearest-256 approximation for terminals without
+  truecolor. **`std/io.no`** — `prompt_line` and `busy_wait`.
+- **Stricter borrow checking.** A value can have at most one live `&!`
+  borrow, and never an `&!` alongside a `&`; writing through a shared
+  `&` reference is rejected.
+
+### Fixed
+
+- `(len s)` on a string read the bytes of its text as a length and
+  returned a garbage number, so every blank-string check built on it
+  silently passed.
+- A `char` printed as its numeric codepoint instead of the character:
+  `(let ch:char 65) (out! ch)` printed `65`, not `A`.
+- `busy_wait` and anything else built on `(now)` ran about 1000x longer
+  than asked on Windows, which froze Game of Life on reseed and Pipe
+  Dreams on a move. The arcade also no longer wipes a game's closing
+  message when returning to the menu.
+- Arithmetic over three or more operands (`(+ a b c)`) dropped
+  everything past the second operand, and `|>` called the result of a
+  partial application instead of threading the value through.
+- A `&!T` parameter of a scalar type mutated a private copy, so the
+  caller never saw the change.
+- `fmt` and `out!` silently skipped an argument that produced no value
+  — printing a literal `{}` — and a module-qualified call like
+  `(std/math/sqrt 4.0)` produced nothing at all. Both are errors now.
+- `Array[T]` creation and indexing: nested `Array[Array[T]]` grids,
+  chained indexing, and a generic sum type used at more than one
+  concrete type in the same program (which silently miscompiled).
+
+### The bundle
+
+- `main.no` now compiles, runs, and asserts its own documented results,
+  so the language tour in the bundle is verified rather than
+  aspirational.
+
 ## [0.3.0] — 2026-09-17
 
 The first public build. Everything below is what the language does
