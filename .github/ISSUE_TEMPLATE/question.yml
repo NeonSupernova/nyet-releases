@@ -1,0 +1,13 @@
+name: Question or language feedback
+description: How do I do X? Or: here's what I think the language should do.
+labels: [question]
+body:
+  - type: textarea
+    id: body
+    attributes:
+      label: What's on your mind
+      description: |
+        Questions about the language, the bundle, or the setup steps are
+        all welcome. So are opinions about how Nyet should work.
+    validations:
+      required: true

@@ -1,0 +1,56 @@
+name: Bug report
+description: Something the compiler got wrong, or a program that misbehaves.
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting. The compiler's source isn't public, so
+        the more precisely you can describe what you ran and what came
+        back, the faster this gets fixed.
+
+  - type: input
+    id: version
+    attributes:
+      label: Nyet version
+      description: The release you downloaded, e.g. `v0.1.0`. `nyet --version` prints it.
+      placeholder: v0.1.0
+    validations:
+      required: true
+
+  - type: dropdown
+    id: os
+    attributes:
+      label: Operating system
+      options:
+        - Windows 11
+        - Windows 10
+        - Other (describe below)
+    validations:
+      required: true
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened
+      description: What you expected, and what you got instead.
+    validations:
+      required: true
+
+  - type: textarea
+    id: program
+    attributes:
+      label: The program
+      description: The smallest `.no` program that triggers it.
+      render: lisp
+    validations:
+      required: true
+
+  - type: textarea
+    id: command-and-output
+    attributes:
+      label: Command and output
+      description: The exact command you ran and everything it printed.
+      render: shell
+    validations:
+      required: true

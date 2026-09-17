@@ -1,0 +1,66 @@
+Nyet Compiler — Binary Distribution License
+Copyright (c) 2026 Gerrit Wielenga. All rights reserved.
+
+The Nyet compiler is proprietary software. Its source code is not
+published. This license covers the compiled binaries and accompanying
+files distributed from
+https://github.com/NeonSupernova/nyet-releases/releases
+(the "Software").
+
+1. GRANT
+
+   You may download, install, and use the Software free of charge, for
+   any purpose, personal or commercial, on as many machines as you
+   like.
+
+   You may redistribute the Software, provided you redistribute it
+   complete and unmodified, including this license and the
+   accompanying third-party notices, and you do not charge for it.
+
+2. YOUR PROGRAMS ARE YOURS
+
+   This license applies to the compiler, not to what you do with it.
+   You own the source code you write and the executables the compiler
+   produces from it, in full. You may use, sell, and license those
+   however you wish. Nothing in this license attaches to them, and no
+   attribution is required.
+
+3. RESTRICTIONS
+
+   You may not:
+
+   a. reverse engineer, decompile, or disassemble the Software, or
+      otherwise attempt to derive its source code, except to the
+      extent such a restriction is unenforceable under applicable law;
+   b. modify the Software, or distribute a modified version of it;
+   c. remove or alter any copyright, license, or attribution notice in
+      the Software;
+   d. sell, rent, lease, or sublicense the Software itself.
+
+   These restrictions apply to the compiler only. They do not apply to
+   the third-party components described in THIRD-PARTY-NOTICES.md,
+   which carry their own licenses, nor to the example programs, which
+   carry their own license.
+
+4. NO WARRANTY
+
+   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+   EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+   MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND
+   NONINFRINGEMENT.
+
+   Nyet is pre-1.0 software. It may produce incorrect programs, fail
+   to compile valid ones, or change incompatibly between releases. Do
+   not rely on it where a defect would cause loss or harm.
+
+5. LIMITATION OF LIABILITY
+
+   IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY CLAIM, DAMAGES, OR
+   OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT, OR
+   OTHERWISE, ARISING FROM, OUT OF, OR IN CONNECTION WITH THE SOFTWARE
+   OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+6. TERMINATION
+
+   This license terminates automatically if you breach it. On
+   termination you must stop using and distributing the Software.
