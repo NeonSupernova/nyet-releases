@@ -7,6 +7,22 @@ behaviour, diagnostics, and the contents of the distributed bundle.
 
 The format follows [Keep a Changelog](https://keepachangelog.com/).
 
+## [0.4.1] — 2026-09-17
+
+### Fixed
+
+- A macro call the compiler couldn't expand produced a confusing error
+  about generated code instead of naming the problem. Building a
+  program whose macro isn't in scope — a typo, or a macro whose module
+  was never loaded — reported something like
+  `output.ll:5481:24: error: expected '(' in call`, pointing into
+  compiler output nobody wrote. It now says which macro it is:
+  `unknown macro 'out!': no macro named 'out' is in scope`.
+- `(use some_module)` naming a module that doesn't exist compiled the
+  program anyway, silently missing everything that module defined —
+  the usual way to hit the error above. A module that can't be found
+  is now a hard error naming it and the paths that were tried.
+
 ## [0.4.0] — 2026-09-17
 
 ### Changed — this one breaks existing programs
